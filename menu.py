@@ -1,5 +1,5 @@
 import PIL.Image, PIL.ImageTk
-from tkinter import DISABLED, Tk, Button, Canvas, Entry, Label, FLAT, NORMAL
+from tkinter import Tk, Button, Canvas, Label, NORMAL, DISABLED
 from game import Game
 from themes import Themes
 import os
@@ -41,7 +41,6 @@ class Menu:
         self.__hlc_widget = "white"
         self.__fg_widget = "black"
         self.__bg_widget = "white"
-        self.__relief_widget = FLAT
         self.__board_color_outline = "black"
         self.__board_color = "#555"
         self.__board_hlc = "yellow"
@@ -53,7 +52,6 @@ class Menu:
         self.__height_50_px = round(50*self.__screen[0]/self.__screen[0])
         self.__height_2 = round(2*self.__screen[0]/self.__screen[0])
         self.__width_20 = round(20*self.__screen[0]/self.__screen[0])
-        self.__width_13 = round(13*self.__screen[0]/self.__screen[0])
         self.__anchor = "center"
         self.__win_screen_outline_color = "yellow"
         self.__win_screen_color = "black"
@@ -63,21 +61,21 @@ class Menu:
         # Les emplacements des widgets
         self.__canvas_p = [self.__screen[0]*50/100, self.__screen[1]*50/100]
         self.__item_logo_p = [self.__screen[0]*50/100, self.__screen[1]*20/100]
-        self.__button_player_vs_player_p = [self.__screen[0]*50/100, self.__screen[1]*40/100]
-        self.__button_player_vs_ordi_p = [self.__screen[0]*50/100, self.__screen[1]*50/100]
-        self.__button_quit_kamon_p = [self.__screen[0]*50/100, self.__screen[1]*60/100]
+        self.__button_player_vs_player_p = [self.__screen[0]*50/100, self.__screen[1]*50/100]
+        self.__button_player_vs_ordi_p = [self.__screen[0]*50/100, self.__screen[1]*60/100]
+        self.__button_quit_kamon_p = [self.__screen[0]*50/100, self.__screen[1]*70/100]
         self.__button_settings_p = [self.__screen[0]*90/100, self.__screen[1]*10/100]
         self.__button_back_p = [self.__screen[0]*10/100, self.__screen[1]*10/100]
         self.__button_break_p = [self.__screen[0]*90/100, self.__screen[1]*10/100]
-        self.__button_resume_p = [self.__screen[0]*50/100, self.__screen[1]*40/100]
-        self.__button_restart_p = [self.__screen[0]*50/100, self.__screen[1]*50/100]
-        self.__button_quit_game_p = [self.__screen[0]*50/100, self.__screen[1]*60/100]
-        self.__button_small_board_p = [self.__screen[0]*50/100, self.__screen[1]*40/100]
-        self.__button_medium_board_p = [self.__screen[0]*50/100, self.__screen[1]*50/100]
-        self.__button_large_board_p = [self.__screen[0]*50/100, self.__screen[1]*60/100]
-        self.__button_theme_astro_p = [450, 300]
-        self.__button_theme_imaginary_p = [700, 300]
-        self.__button_theme_classique_p = [950, 300]
+        self.__button_resume_p = [self.__screen[0]*50/100, self.__screen[1]*50/100]
+        self.__button_restart_p = [self.__screen[0]*50/100, self.__screen[1]*60/100]
+        self.__button_quit_game_p = [self.__screen[0]*50/100, self.__screen[1]*70/100]
+        self.__button_small_board_p = [self.__screen[0]*50/100, self.__screen[1]*50/100]
+        self.__button_medium_board_p = [self.__screen[0]*50/100, self.__screen[1]*60/100]
+        self.__button_large_board_p = [self.__screen[0]*50/100, self.__screen[1]*70/100]
+        self.__button_theme_astro_p = [self.__screen[0]*50/100, self.__screen[1]*50/100]
+        self.__button_theme_imaginary_p = [self.__screen[0]*50/100, self.__screen[1]*60/100]
+        self.__button_theme_classique_p = [self.__screen[0]*50/100, self.__screen[1]*70/100]
         self.__item_title_break_p = [self.__screen[0]*50/100, self.__screen[1]*20/100]
         self.__item_title_settings_p = [self.__screen[0]*50/100, self.__screen[1]*20/100]
         self.__item_title_board_size_p = [self.__screen[0]*50/100, self.__screen[1]*20/100]
@@ -96,9 +94,9 @@ class Menu:
         self.__button_small_board = Button(self.__root, text='Small', command=lambda: [self.change_display(self.__page_game), self.start_game(37, self.__mult_rayon*65, 5, self.__mode)], font=self.__font_helvetica_24_bold, fg=self.__fg_widget, bg=self.__bg_widget, height=self.__height_2, width=self.__width_20, highlightthickness=self.__hlt_widget, highlightbackground=self.__hlb_widget, highlightcolor=self.__hlc_widget)
         self.__button_medium_board = Button(self.__root, text='Medium', command=lambda: [self.change_display(self.__page_game), self.start_game(61, self.__mult_rayon*50, 4, self.__mode)], font=self.__font_helvetica_24_bold, fg=self.__fg_widget, bg=self.__bg_widget, height=self.__height_2, width=self.__width_20, highlightthickness=self.__hlt_widget, highlightbackground=self.__hlb_widget, highlightcolor=self.__hlc_widget)
         self.__button_large_board = Button(self.__root, text='Large', command=lambda: [self.change_display(self.__page_game), self.start_game(91, self.__mult_rayon*40, 3, self.__mode)], font=self.__font_helvetica_24_bold, fg=self.__fg_widget, bg=self.__bg_widget, height=self.__height_2, width=self.__width_20, highlightthickness=self.__hlt_widget, highlightbackground=self.__hlb_widget, highlightcolor=self.__hlc_widget)
-        self.__button_theme_astro = Button(self.__root, text='Astro theme', command=lambda: [self.change_theme(self.__theme_astro)], font=self.__font_helvetica_24_bold, fg=self.__fg_widget, bg=self.__bg_widget, height=self.__height_2, width=self.__width_13, highlightthickness=self.__hlt_widget, highlightbackground=self.__hlb_widget, highlightcolor=self.__hlc_widget)
-        self.__button_theme_imaginary = Button(self.__root, text='Imaginary theme', command=lambda: [self.change_theme(self.__theme_imaginary)], font=self.__font_helvetica_24_bold, fg=self.__fg_widget, bg=self.__bg_widget, height=self.__height_2, width=self.__width_13, highlightthickness=self.__hlt_widget, highlightbackground=self.__hlb_widget, highlightcolor=self.__hlc_widget)
-        self.__button_theme_classique = Button(self.__root, text='Default theme', command=lambda: [self.change_theme(self.__theme_classique)], font=self.__font_helvetica_24_bold, fg=self.__fg_widget, bg=self.__bg_widget, height=self.__height_2, width=self.__width_13, highlightthickness=self.__hlt_widget, highlightbackground=self.__hlb_widget, highlightcolor=self.__hlc_widget)
+        self.__button_theme_astro = Button(self.__root, text='Astro theme', command=lambda: [self.change_theme(self.__theme_astro)], font=self.__font_helvetica_24_bold, fg=self.__fg_widget, bg=self.__bg_widget, height=self.__height_2, width=self.__width_20, highlightthickness=self.__hlt_widget, highlightbackground=self.__hlb_widget, highlightcolor=self.__hlc_widget)
+        self.__button_theme_imaginary = Button(self.__root, text='Imaginary theme', command=lambda: [self.change_theme(self.__theme_imaginary)], font=self.__font_helvetica_24_bold, fg=self.__fg_widget, bg=self.__bg_widget, height=self.__height_2, width=self.__width_20, highlightthickness=self.__hlt_widget, highlightbackground=self.__hlb_widget, highlightcolor=self.__hlc_widget)
+        self.__button_theme_classique = Button(self.__root, text='Default theme', command=lambda: [self.change_theme(self.__theme_classique)], font=self.__font_helvetica_24_bold, fg=self.__fg_widget, bg=self.__bg_widget, height=self.__height_2, width=self.__width_20, highlightthickness=self.__hlt_widget, highlightbackground=self.__hlb_widget, highlightcolor=self.__hlc_widget)
         self.__canvas.place(x=self.__canvas_p[0], y=self.__canvas_p[1], anchor=self.__anchor)
         #--------------------------------------------------------------------------------------------------------------------#
         # Les items
